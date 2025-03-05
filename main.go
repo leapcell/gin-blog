@@ -109,7 +109,7 @@ func main() {
 	r := gin.Default()
 
 	// Load templates
-	r.LoadHTMLGlob("templates/*.tmpl")
+	r.LoadHTMLGlob("templates/*.html")
 	r.Static("/static", "./static")
 
 	// Home page route
@@ -119,7 +119,7 @@ func main() {
 			c.JSON(500, gin.H{"error": "Failed to get posts"})
 			return
 		}
-		c.HTML(200, "index.tmpl", gin.H{
+		c.HTML(200, "index.html", gin.H{
 			"posts": posts,
 		})
 	})
@@ -146,7 +146,7 @@ func main() {
 			return
 		}
 
-		c.HTML(200, "single.tmpl", gin.H{
+		c.HTML(200, "single.html", gin.H{
 			"post": foundPost,
 		})
 	})
